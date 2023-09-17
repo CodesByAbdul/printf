@@ -4,11 +4,10 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
-#include <limits.h>
 
 /**
  * struct format_specs - a struct to hold the format specifiers
- * and it's corresponding function
+ * and it's correspionding function
  * @specs: char pointer to the strings of specifiers
  * @ptf: pointer to the array of functions
  */
@@ -23,7 +22,8 @@ int _putchar(char c);
 int p_c(va_list params);
 int p_str(va_list params);
 int p_per(va_list params);
-int p_int1(va_list params);
-int p_int2(va_list params);
+int p_i(va_list params);
+int p_d(va_list params);
+int print_number(int n);
 
 #endif

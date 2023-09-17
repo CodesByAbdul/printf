@@ -3,58 +3,75 @@
 /**
  * print_number - function that prints an integer.
  * @n: integer to be print
+ * Return: variable that keep track of character print count
  */
 
-void print_number(int n)
+int print_number(int n)
 {
-	unsigned int n1;
+	/* declare a varible to keep track of characters counts */
+	int x = 0;
 
-	if (n < 0) /* Check if the input number is negative */
-	{
-		n1 = -n; /* Take the absolute value of n */
-		_putchar('-');
-	}
-	else
-	{
-		n1 = n;
-	}
-/* Recursively call print_number to print digits from left to right */
-	if (n1 / 10)
-	{
-		print_number(n1 / 10); /* Recursive call with n1 divided by 10 */
-	}
+/* check if n is greater or equal to zero */
+	if (n >= 10)
+	/* call print_number function to print the remaining digits */
+	x = x + print_number(n / 10);
+	
+	_putchar(n % 10 + '0'); /* print the last digit number */
+	x++; /* increament counter */
 
-	_putchar((n1 % 10) + '0'); /* Print the digit by converting to ASCII */
+	return (x);
 }
 
 /**
  * p_int1 - function that prints integers when d is encountered
  * @params: va_list variable representing arguments passed
- * Return: 0 (success)
+ * Return: variable that keep track of character print count
  */
 
-int p_int1(va_list params)
+int p_i(va_list params)
 {
-	int x;
+	int x = 0, n;
 
-	x = va_arg(params, int);
-	print_number(x);
+	n = va_arg(params, int);
+	/* check if number is negative */
+	if (n < 0)
+	{
+	/* if negative, print minus sign and make number poistive */
+		_putchar('-');
+		n = -n;
+		x++; /* increament counter */
+	}
+	if (n >= 10)
+		x = x + print_number(n / 10);
 
-	return (0);
+	_putchar(n % 10 + '0');
+	x++;
+
+	return (x);
 }
 
 /**
  * p_int2 - function that prints integer when i is encountered
  * @params: va_list variable representing the arguments passed
- * Return: 0 success
+ * Return: variable that keep track of character print count
  */
 
-int p_int2(va_list params)
+int p_d(va_list params)
 {
-	int x;
+	int x = 0, n;
 
-	x = va_arg(params, int);
-	print_number(x);
+	n = va_arg(params, int);
+	if (n < 0)
+	{
+		_putchar('-');
+		n = -n;
+		x++;
+	}
+	if (n >= 10)
+		x = x + print_number(n / 10);
 
-	return (0);
+	_putchar(n % 10 + '0');
+	x++;
+
+	return (x);
 }
