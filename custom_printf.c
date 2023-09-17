@@ -49,6 +49,11 @@ int _printf(const char *format, ...)
 			if (!spec_found) /* if no match is found print % to output */
 			{
 				_putchar('%');
+				while (format[x + 1] == '%')
+				{
+					char_count++;
+					x++;
+				}
 				return (-1);
 			}
 		}
