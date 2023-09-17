@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
+#include <limits.h>
 
 /**
  * struct format_specs - a struct to hold the format specifiers
@@ -22,5 +23,7 @@ int _putchar(char c);
 int p_c(va_list params);
 int p_str(va_list params);
 int p_per(va_list params);
+int p_int1(va_list params);
+int p_int2(va_list params);
 
 #endif

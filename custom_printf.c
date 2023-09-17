@@ -13,8 +13,8 @@ int _printf(const char *format, ...)
 	va_list params;
 /* create array of fmt struct, match specifier to corresponding function */
 	fmt specs_arr[] = { {"c", p_c}, {"s", p_str},
-						{"%", p_per},
-						{NULL, NULL}
+						{"%", p_per}, {"d", p_int1},
+						{"i", p_int2}, {NULL, NULL}
 	};
 
 	va_start(params, format);
