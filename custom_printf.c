@@ -9,7 +9,7 @@
 
 int _printf(const char *format, ...)
 {
-	int x, char_count = 0, y, spec_found = 0;
+	int x, char_count = 0, y;
 	va_list params;
 /* create array of fmt struct, match specifier to corresponding function */
 	fmt specs_arr[] = { {"c", p_c}, {"s", p_str},
@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 	for (x = 0; format[x] != '\0'; x++)
 	{
 		/* check if zero directive is pass and print string */
-		if (format[x] != '%' || format[x + 1] == '\0')
+		if (format[x] != '%')
 		{
 			_putchar(format[x]);
 			char_count++;
@@ -34,26 +34,15 @@ int _printf(const char *format, ...)
 			{
 				if (format[x + 1] == *(specs_arr[y].specs))
 				{
-					if (specs_arr[y].ptf != NULL)
-					{
 				/* call the corresponding function in the arrays of function */
-						char_count += specs_arr[y].ptf(params);
-						x++;
-						spec_found++;
-					}
-					else
-						return (-1);
+					char_count += specs_arr[y].ptf(params);
+					x++;
 					break;
 				}
 			}
-			if (!spec_found) /* if no match is found print % to output */
+			if (specs_arr[y].specs == NULL) /* if no match is found print % to output */
 			{
 				_putchar('%');
-				while (format[x + 1] == '%')
-				{
-					char_count++;
-					x++;
-				}
 				return (-1);
 			}
 		}
