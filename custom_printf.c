@@ -12,7 +12,10 @@ int _printf(const char *format, ...)
 	int x, char_count = 0, y, spec_found = 0;
 	va_list params;
 /* create array of fmt struct, match specifier to corresponding function */
-	fmt specs_arr[] = {{"c", p_c}, {"s", p_str}, {"%", p_per}, {NULL, NULL}};
+	fmt specs_arr[] = { {"c", p_c}, {"s", p_str},
+						{"%", p_per},
+						{NULL, NULL}
+	};
 
 	va_start(params, format);
 	if (format == NULL) /* check if the format string is empty */
@@ -31,10 +34,15 @@ int _printf(const char *format, ...)
 			{
 				if (format[x + 1] == *(specs_arr[y].specs))
 				{
+					if (specs_arr[y].ptf != NULL)
+					{
 				/* call the corresponding function in the arrays of function */
-					char_count += specs_arr[y].ptf(params);
-					x++;
-					spec_found++;
+						char_count += specs_arr[y].ptf(params);
+						x++;
+						spec_found++;
+					}
+					else
+						return (-1);
 					break;
 				}
 			}
