@@ -34,17 +34,19 @@ int p_i(va_list params)
 
 	n = va_arg(params, int);
 	/* check if number is negative */
-	if (n == 0)
-	{
-		_putchar('0');
-		return (1);
-	}
 	if (n < 0)
 	{
 	/* if negative, print minus sign and make number poistive */
 		_putchar('-');
-		n = -n;
-		x++; /* increament counter */
+		x++;
+		if (n == INT_MIN)
+		{
+			_putchar('2');
+			x++;
+			n = 147483648;
+		}
+		else
+			n = -n;
 	}
 	if (n >= 10)
 		x = x + print_number(n / 10);
@@ -66,16 +68,18 @@ int p_d(va_list params)
 	int x = 0, n;
 
 	n = va_arg(params, int);
-	if (n == 0)
-	{
-		_putchar('0');
-		return (1);
-	}
 	if (n < 0)
 	{
 		_putchar('-');
-		n = -n;
 		x++;
+		if (n == INT_MIN)
+		{
+			_putchar('2');
+			x++;
+			n = 147483648;
+		}
+		else
+			n = -n;
 	}
 	if (n >= 10)
 		x = x + print_number(n / 10);

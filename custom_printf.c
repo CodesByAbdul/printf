@@ -11,6 +11,7 @@ int _printf(const char *format, ...)
 {
 	int x, char_count = 0, y;
 	va_list params;
+	bool valid_specifier;
 /* create array of fmt struct, match specifier to corresponding function */
 	fmt specs_arr[] = { {"c", p_c}, {"s", p_str},
 						{"%", p_per}, {"d", p_d},
@@ -31,20 +32,24 @@ int _printf(const char *format, ...)
 		}
 		else /* handles various specifiers encoutered */
 		{
-			for (y = 0; *(specs_arr[y].specs) != '\0'; y++)
+			valid_specifier = false;
+			for (y = 0; specs_arr[y].specs != NULL; y++)
 			{
 				if (format[x + 1] == *(specs_arr[y].specs))
 				{
 				/* call the corresponding function in the arrays of function */
 					char_count += specs_arr[y].ptf(params);
 					x++;
+					valid_specifier = true;
 					break;
 				}
 			}
-			if (specs_arr[y].specs == NULL) /* if no match is found print % to output */
+			if (!valid_specifier) /* if no match is found print % to output */
 			{
 				_putchar('%');
-				return (-1);
+				_putchar(format[x + 1]);
+				char_count += 2;
+				x++;
 			}
 		}
 	}

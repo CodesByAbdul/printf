@@ -4,6 +4,9 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
+#include <stddef.h>
+#include <stdbool.h>
+#include <limits.h>
 
 /**
  * struct format_specs - a struct to hold the format specifiers
