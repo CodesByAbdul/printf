@@ -164,9 +164,9 @@ int p_ptr(va_list params)
 	int x = 0, y;
 	int *ptrArr;
 	void *ptr = va_arg(params, void*);
-	/* convert the pointer to an unsigned long int */
-	unsigned long int n = (unsigned long int)ptr;
-	unsigned long int tmp;
+	/* convert the pointer to an unsigned long */
+	unsigned long n = (unsigned long)ptr;
+	unsigned long tmp;
 
 	tmp = n;
 	while (n / 16 != 0)
