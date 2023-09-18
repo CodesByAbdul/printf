@@ -21,12 +21,12 @@ int _printf(const char *format, ...)
 
 	va_start(params, format);
 	/* check if the format string is empty */
-	if (format == NULL)
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 	for (x = 0; format[x] != '\0'; x++)
 	{
 		/* check if zero directive is pass and print string */
-		if (format[x] != '%')
+		if (format[x] != '%' || format[x + 1] == '\0')
 		{
 			_putchar(format[x]);
 			char_count++;
