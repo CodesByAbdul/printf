@@ -164,13 +164,17 @@ int p_ptr(va_list params)
 	int x = 0, y;
 	char *ptrArr;
 	void *ptr = va_arg(params, void*);
-	/* convert the pointer to an unsigned long */
+	/* convert pointer to unsigned long int */
 	unsigned long int n = (unsigned long int)ptr;
-	unsigned long int tmp;
+	unsigned long int tmp = n;
 
-	tmp = n;
 	if (ptr == NULL)
 	{
+		_putchar('(');
+		_putchar('n');
+		_putchar('i');
+		_putchar('l');
+		_putchar(')');
 		return (-1);
 	}
 	while (n / 16 != 0)
@@ -184,7 +188,6 @@ int p_ptr(va_list params)
 	{
 		return (-1);
 	}
-
 	ptrArr[0] = '0';
 	ptrArr[1] = 'x';
 	for (y = x - 1; y >= 0; y--)
@@ -192,10 +195,9 @@ int p_ptr(va_list params)
 		ptrArr[y + 2] = "0123456789abcdef"[tmp % 16];
 		tmp = tmp / 16;
 	}
+	ptrArr[y] = '\0';
 	for (y = 0; y < x + 2; y++)
-	{
 		_putchar(ptrArr[y]);
-	}
 	free(ptrArr);
 	return (x + 2);/* +2 for the 0x prefix */
 }
