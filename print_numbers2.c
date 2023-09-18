@@ -169,6 +169,10 @@ int p_ptr(va_list params)
 	unsigned long int tmp;
 
 	tmp = n;
+	if (ptr == NULL)
+	{
+		return (-1);
+	}
 	while (n / 16 != 0)
 	{
 		n = n / 16;
