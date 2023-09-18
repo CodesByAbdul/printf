@@ -28,5 +28,6 @@ int p_per(va_list params);
 int p_i(va_list params);
 int p_d(va_list params);
 int print_number(int n);
+int p_bi(va_list params);
 
 #endif
