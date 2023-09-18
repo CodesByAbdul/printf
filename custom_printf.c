@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 	for (x = 0; format[x] != '\0'; x++)
 	{
 		/* check if zero directive is pass and print string */
-		if (format[x] != '%' || format[x + 1] == '\0')
+		if (format[x] != '%')
 		{
 			_putchar(format[x]);
 			char_count++;
