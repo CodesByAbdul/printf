@@ -175,7 +175,7 @@ int p_ptr(va_list params)
 		x++;
 	}
 	x++;
-	ptrArr = malloc(sizeof(int) * x);
+	ptrArr = malloc(sizeof(int) * (x + 2));
 	if (ptrArr == NULL)
 	{
 		return (-1);
