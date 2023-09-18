@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 
 	va_start(params, format);
 	/* check if the format string is empty */
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+	if (format == NULL)
 		return (-1);
 	for (x = 0; format[x] != '\0'; x++)
 	{

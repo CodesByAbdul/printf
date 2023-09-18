@@ -14,6 +14,7 @@
  * @specs: char pointer to the strings of specifiers
  * @ptf: pointer to the array of functions
  */
+
 typedef struct format_specs
 {
 		char *specs;
