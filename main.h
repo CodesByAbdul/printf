@@ -7,6 +7,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include <limits.h>
+#include <stdlib.h>
 
 /**
  * struct format_specs - a struct to hold the format specifiers
@@ -30,5 +31,9 @@ int p_i(va_list params);
 int p_d(va_list params);
 int print_number(int n);
 int p_bi(va_list params);
+int p_unsigned(va_list params);
+int p_oct(va_list params);
+int p_hex(va_list params);
+int p_HEX(va_list params);
 
 #endif

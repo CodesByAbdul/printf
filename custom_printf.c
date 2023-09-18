@@ -16,6 +16,8 @@ int _printf(const char *format, ...)
 	fmt specs_arr[] = { {"c", p_c}, {"s", p_str},
 						{"%", p_per}, {"d", p_d},
 						{"i", p_i}, {"b", p_bi},
+						{"u", p_unsigned}, {"o", p_oct},
+						{"x", p_hex}, {"X", p_HEX},
 						{NULL, NULL}
 	};
 
