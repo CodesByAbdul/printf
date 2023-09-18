@@ -162,11 +162,11 @@ int p_HEX(va_list params)
 int p_ptr(va_list params)
 {
 	int x = 0, y;
-	int *ptrArr;
+	char *ptrArr;
 	void *ptr = va_arg(params, void*);
 	/* convert the pointer to an unsigned long */
-	unsigned long n = (unsigned long)ptr;
-	unsigned long tmp;
+	unsigned long int n = (unsigned long int)ptr;
+	unsigned long int tmp;
 
 	tmp = n;
 	while (n / 16 != 0)
@@ -175,25 +175,22 @@ int p_ptr(va_list params)
 		x++;
 	}
 	x++;
-	ptrArr = malloc(sizeof(int) * (x + 2));
+	ptrArr = malloc(sizeof(char) * x + 3);
 	if (ptrArr == NULL)
 	{
 		return (-1);
 	}
-	for (y = 0; y < x; y++)
+
+	ptrArr[0] = '0';
+	ptrArr[1] = 'x';
+	for (y = x - 1; y >= 0; y--)
 	{
-		ptrArr[y] = tmp % 16;
+		ptrArr[y + 2] = "0123456789abcdef"[tmp % 16];
 		tmp = tmp / 16;
 	}
-	_putchar('0');
-	_putchar('x');
-
-	for (y = x - 1; y >= 0; --y)
+	for (y = 0; y < x + 2; y++)
 	{
-		if (ptrArr[y] < 10)
-			_putchar(ptrArr[y] + '0');
-		else
-			_putchar(ptrArr[y] + ('a' - 10));/* convert 10 - 15 to a - f */
+		_putchar(ptrArr[y]);
 	}
 	free(ptrArr);
 	return (x + 2);/* +2 for the 0x prefix */
