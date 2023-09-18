@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * p_unsigned - function to print an unsigned integer.
+ * p_unsigned - function that handles u format specifier.
  * @params: va_list variable
  * Return: number of characters printed
  */
@@ -23,7 +23,7 @@ int p_unsigned(va_list params)
 }
 
 /**
- * p_oct - function that prints octal numbers
+ * p_oct - function that handles o format specifier
  * @params: va_list variable to save parameters
  * Return: x (counter for the number of octal digits)
  */
@@ -66,7 +66,7 @@ int p_oct(va_list params)
 }
 
 /**
- * p_hex - function that prints hexadecimal numbers in lowercase
+ * p_hex - function that handles x format specifier
  * @params: va_list variable to save parameters
  * Return: x (counter for the number of hexadecimal digits)
  */
@@ -111,7 +111,7 @@ int p_hex(va_list params)
 }
 
 /**
- * p_HEX - function that prints hexadecimal numbers in uppercase
+ * p_HEX - function that handles X format specifier
  * @params: va_list variable to save parameters
  * Return: x (counter for the number of hexadecimal digits)
  */
@@ -151,4 +151,50 @@ int p_HEX(va_list params)
 	}
 	free(HEXarr);
 	return (x);
+}
+
+/**
+ * p_ptr - function that handles p format specifier
+ * @params: va_list variable to save parameters
+ * Return: x (counter for the number of characters printed)
+ */
+
+int p_ptr(va_list params)
+{
+	int x = 0, y;
+	int *ptrArr;
+	void *ptr = va_arg(params, void*);
+	/* convert the pointer to an unsigned long int */
+	unsigned long int n = (unsigned long int)ptr;
+	unsigned long int tmp;
+
+	tmp = n;
+	while (n / 16 != 0)
+	{
+		n = n / 16;
+		x++;
+	}
+	x++;
+	ptrArr = malloc(sizeof(int) * x);
+	if (ptrArr == NULL)
+	{
+		return (-1);
+	}
+	for (y = 0; y < x; y++)
+	{
+		ptrArr[y] = tmp % 16;
+		tmp = tmp / 16;
+	}
+	_putchar('0');
+	_putchar('x');
+
+	for (y = x - 1; y >= 0; --y)
+	{
+		if (ptrArr[y] < 10)
+			_putchar(ptrArr[y] + '0');
+		else
+			_putchar(ptrArr[y] + ('a' - 10));/* convert 10 - 15 to a - f */
+	}
+	free(ptrArr);
+	return (x + 2);/* +2 for the 0x prefix */
 }

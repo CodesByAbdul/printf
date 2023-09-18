@@ -35,5 +35,6 @@ int p_unsigned(va_list params);
 int p_oct(va_list params);
 int p_hex(va_list params);
 int p_HEX(va_list params);
+int p_ptr(va_list params);
 
 #endif
