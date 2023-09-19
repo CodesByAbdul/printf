@@ -72,3 +72,40 @@ int p_rot13(va_list params)
 	}
 	return (len);
 }
+
+/**
+ * p_S - custom format specifier to print unprintable character
+ * @params: va_list variable
+ * Return: length of printed string
+ */
+
+int p_S(va_list params)
+{
+	int count = 0;
+	char *str = va_arg(params, char*);
+
+	if (str == NULL)
+	{
+		return (-1);
+	}
+
+	while (*str)
+	{
+		if (*str < 32 || *str >= 127)
+		{
+		/* Handle non-printable characters */
+			_putchar('\\');
+			_putchar('x');
+			_putchar((*str / 16) < 10 ? (*str / 16) + '0' : (*str / 16) - 10 + 'A');
+			_putchar((*str % 16) < 10 ? (*str % 16) + '0' : (*str % 16) - 10 + 'A');
+		}
+		else
+		{
+		/* Print printable characters as is*/
+			_putchar(*str);
+		}
+		count++;
+		str++;
+	}
+	return (count);
+}

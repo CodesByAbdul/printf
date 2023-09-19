@@ -38,5 +38,6 @@ int p_HEX(va_list params);
 int p_ptr(va_list params);
 int p_rev(va_list params);
 int p_rot13(va_list params);
+int p_S(va_list params);
 
 #endif
