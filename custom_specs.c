@@ -91,7 +91,7 @@ int p_S(va_list params)
 
 	while (*str)
 	{
-		if (*str < 32 || *str >= 127)
+		if (!isprint(*str))
 		{
 		/* Handle non-printable characters */
 			_putchar('\\');

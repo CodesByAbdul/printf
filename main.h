@@ -8,6 +8,7 @@
 #include <stdbool.h>
 #include <limits.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 /**
  * struct format_specs - a struct to hold the format specifiers
