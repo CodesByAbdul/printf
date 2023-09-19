@@ -19,6 +19,7 @@ int _printf(const char *format, ...)
 						{"u", p_unsigned}, {"o", p_oct},
 						{"x", p_hex}, {"X", p_HEX},
 						{"p", p_ptr}, {"r", p_rev},
+						{"R", p_rot13},
 						{NULL, NULL}
 	};
 
