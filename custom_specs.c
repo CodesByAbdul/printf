@@ -50,7 +50,7 @@ int p_rot13(va_list params)
 	char rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	tmp = va_arg(params, char*);
-	str = malloc(sizeof(tmp) + 1);
+	str = malloc(sizeof(strlen(tmp)) + 1);
 	if (str == NULL)
 	{
 		return (-1);
