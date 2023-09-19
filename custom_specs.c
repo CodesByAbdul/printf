@@ -98,14 +98,16 @@ int p_S(va_list params)
 			_putchar('x');
 			_putchar((*str / 16) < 10 ? (*str / 16) + '0' : (*str / 16) - 10 + 'A');
 			_putchar((*str % 16) < 10 ? (*str % 16) + '0' : (*str % 16) - 10 + 'A');
+			count += 4;
 		}
 		else
 		{
 		/* Print printable characters as is*/
 			_putchar(*str);
+			count++;
 		}
-		count++;
 		str++;
 	}
+
 	return (count);
 }
