@@ -100,12 +100,12 @@ int p_bi(va_list params)
 {
 	unsigned int n;
 	int x, count = 0;
-	int binary[64]; /* assuming 64-bit integers */
+	int binary[32]; /* assuming 64-bit integers */
 
 	n = va_arg(params, unsigned int);
 
 	/* convert the decimal number to binary */
-	for (x = 63; x >= 0; x--)
+	for (x = 31; x >= 0; x--)
 	{
 	/* divide by 2 and also take modulo by two */
    /* to convert decimal base 10 to binary base 2 */
@@ -113,13 +113,13 @@ int p_bi(va_list params)
 		n = n / 2;
 	}
 	/* find the first non-zero digit */
-	for (x = 0; x < 64; x++)
+	for (x = 0; x < 32; x++)
 	{
 		if (binary[x] == 1)
 			break;
 	}
 	/* print the binary representation */
-	for (; x < 64; x++)
+	for (; x < 32; x++)
 	{
 		_putchar(binary[x] + '0');
 		count++; /* increament count */
