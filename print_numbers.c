@@ -104,6 +104,11 @@ int p_bi(va_list params)
 
 	n = va_arg(params, unsigned int);
 
+	if (n == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 	/* convert the decimal number to binary */
 	for (x = 31; x >= 0; x--)
 	{
