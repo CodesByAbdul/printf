@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 						{"i", p_i}, {"b", p_bi},
 						{"u", p_unsigned}, {"o", p_oct},
 						{"x", p_hex}, {"X", p_HEX},
-						{"p", p_ptr},
+						{"p", p_ptr}, {"r", p_rev},
 						{NULL, NULL}
 	};
 
