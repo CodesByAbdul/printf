@@ -43,31 +43,32 @@ int p_rev(va_list params)
 
 int p_rot13(va_list params)
 {
-	int y, len = 0;
+	int y, len = 0, found = 0;
 	char *str;
-	char *tmp;
 	char orig[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	tmp = va_arg(params, char*);
-	str = malloc(sizeof(strlen(tmp)) + 1);
+	str = va_arg(params, char*);
 	if (str == NULL)
 	{
 		return (-1);
 	}
-	strcpy(str, tmp);/*copy original string to the new string */
 	for (len = 0; str[len] != '\0'; len++)
 	{
+		found = 0;
 		for (y = 0; y < 52; y++)
 		{
 			if (str[len] == orig[y])
 			{
-				str[len] = rot13[y];
-				_putchar(str[len]);
+				_putchar(rot13[y]);
+				found = 1;
 				break;
 			}
 		}
+		if (!found)
+		{
+			_putchar(str[len]);
+		}
 	}
-	free(str);
 	return (len);
 }
